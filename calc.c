@@ -11,9 +11,9 @@ void integral_recur (int nmin, int nmax, double vals[])	{
 
 	vals1[0] = 1. - 1/M_E; // Sets the first value for the sum
 	
-	for( i = 1; i <= nmax; vals1[i] = (double)i*vals1[i - 1] - 1/M_E; i++ );
+	for(int i = 1; i <= nmax; vals1[i] = ((double)i) * vals1 [i - 1] - 1 / M_E, printf("%d", i),  i++);
 	
-	*vals[0] = *vals[nmin] // get vals to point to nmin in vals (I don't think I can do this)
+	// *vals[0] = *vals[nmin] // get vals to point to nmin in vals (I don't think I can do this)
 		//Might end up having to use for loop to put values in vals instead
 		
 }
@@ -32,7 +32,7 @@ void integral_gen (int nmin, int nmax, double vals[])	{
 
 int main(void)	{
 
-	#DEFINE NMAX 100
+	#define NMAX 100
 
 	double vals1[NMAX + 1], vals2[NMAX + 1];	
 
