@@ -12,7 +12,15 @@ void integral_recur (int nmin, int nmax, double vals[])	{
 	
 	for(int i = 1; i <= nmax; vals1[i] = ((double)i) * vals1 [i - 1] - 1 / M_E, printf("%d", i),  i++);
 	
-	for(int i = nmin - 1, int j = 0; i <= nmax; vals[j] = vals[i]);
+	int j =0;
+		
+	
+		
+	for(int i = nmin - 1; i <= nmax; vals[j] = vals1[i])	{
+
+		printf("%f", vals[i]);
+
+	}
 
 	// *vals[] = *vals[nmin] // get vals to point to nmin in vals (I don't think I can do this)
 		//Might end up having to use for loop to put values in vals instead
