@@ -4,24 +4,36 @@
 
 //void integral_recur (int nmin, int nmax, double vals[]); //do I need prototypes if func() before main()
 
-
+//have to work backwards in order to get this to work, multiplying by small numbers == bad
 
 
 void integral_recur (int nmin, int nmax, double vals[])	{
 
 	// Use different array then set vals to certain position in that array or store only certain things in the array
 
-	double vals1[nmax]; //or set size to nmin + nmax + 1 so it matches with size vals1 in main()
+	double vals1[100 + 1]; //or set size to nmin + nmax + 1 so it matches with size vals1 in main()
 
-	vals[100] = 0.00367843028136748866811;      // initial condition given by integrator
+	vals1[100] = 0.00367843028136748866811;      // initial condition given by integrator
 
-	for(int i = 99; i >= nmin; vals[i] = vals[i + 1] / (i + 1) + 1 / (M_E * (i + 1)), i--);
+	printf("%10.10f\n", vals1[100]);
+
+	printf("\nnmin value\t%d\n\n", nmin);
+
+	for(int i = 99; i >= nmin; vals1[i] = vals1[i + 1] / (i + 1) + 1 / (M_E * (i + 1)), printf("%10.10f\t%d\tnmin %d\n", vals1[i], i, nmin), i--);
+
+	printf("done\n%d\n", nmin);
 
 	int j = 0;
 
-	for(int i = nmin - 1; i <= nmax; vals[j] = vals1[i])	{
+	printf("thisfuckingthingbetterwork%f\n", vals1[j]);
 
-		printf("%f\n", vals[j]);
+	for(int i = nmin; i <= nmax; vals[j] = vals1[i])	{
+
+		vals[j] = vals1[i];
+
+		printf("%f\t%f\t%d\n", vals[j], vals1[i], j);
+
+		vals[j] = vals1[i];
 
 		i++;
 		j++;
@@ -50,16 +62,16 @@ int main(void)	{
 
 	#define NMAX 100
 
-	int nmin = 1;
-	int nmax = 20;
+	int nminn = 0;
+	int nmaxx = 20;
 
-	printf("%d,%d", NMAX, nmax);
+	// printf("%d, %d\n", NMAX, nmax);
 
 	double vals1[NMAX + 1], vals2[NMAX + 1];
 
-	integral_recur (nmin, nmax, vals1);
+	integral_recur (nminn, nmaxx, vals1);
 
-	integral_gen (nmin, nmax, vals2);
+	integral_gen (nminn, nmaxx, vals2);
 
 	return 0;
 }
