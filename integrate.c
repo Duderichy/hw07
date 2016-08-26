@@ -15,28 +15,13 @@ void integral_recur (int nmin, int nmax, double vals[])	{
 
 	vals1[100] = 0.00367843028136748866811;      // initial condition given by integrator
 
-	printf("%10.10f\n", vals1[100]);
-
-	printf("\nnmin value\t%d\n\n", nmin);
-
-	for(int i = 99; i >= nmin; vals1[i] = vals1[i + 1] / (i + 1) + 1 / (M_E * (i + 1)), printf("%10.10f\t%d\tnmin %d\n", vals1[i], i, nmin), i--);
-
-	printf("done\n%d\n", nmin);
+	for(int i = 99; i >= nmin; vals1[i] = vals1[i + 1] / (i + 1) + 1 / (M_E * (i + 1)), i--);
 
 	int j = 0;
 
-	printf("thisfuckingthingbetterwork%f\n", vals1[j]);
-
-	for(int i = nmin; i <= nmax; vals[j] = vals1[i])	{
+	for(int i = nmin; i <= nmax; i++, j++)	{
 
 		vals[j] = vals1[i];
-
-		printf("%f\t%f\t%d\n", vals[j], vals1[i], j);
-
-		vals[j] = vals1[i];
-
-		i++;
-		j++;
 
 	}
 
@@ -62,14 +47,20 @@ int main(void)	{
 
 	#define NMAX 100
 
-	int nminn = 0;
-	int nmaxx = 20;
-
-	// printf("%d, %d\n", NMAX, nmax);
+	int nminn = 20;
+	int nmaxx = 40;
 
 	double vals1[NMAX + 1], vals2[NMAX + 1];
 
-	integral_recur (nminn, nmaxx, vals1);
+	integral_recur (nminn, nmaxx, vals1); //returns nminn to nmaxx in vals1[] in positions 0 to nmaxx - nminn
+
+	/*
+	for(int i = 0; i <= nmaxx - nminn; i++)	{
+
+		printf("%f\t%d\n", vals1[i], i);
+
+	}
+	*/
 
 	integral_gen (nminn, nmaxx, vals2);
 
