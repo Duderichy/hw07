@@ -1,5 +1,7 @@
 all: integrate.c integral_general.c
-	gcc integrate.c -I/usr/local/inlcude integral_general.c -o integrate.o
+	gcc -Wall -I/usr/local/include integral_general.c integrate.c -o integrate.o
+	gcc -L/usr/local/include -lgsl integrate.o -o a.out
+
 
 clean :
 	rm -f *.o

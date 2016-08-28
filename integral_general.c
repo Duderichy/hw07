@@ -13,7 +13,7 @@ double f (double x, void *params) {
 }
 
 
-void gsl_ingtegration_function (void) {
+void gsl_integration_function (void) {
 
   double result, error;
   double a = 0., b = 1.;
@@ -40,5 +40,4 @@ void gsl_ingtegration_function (void) {
 
   gsl_integration_workspace_free (w);
 
-  return 0;
 }
