@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
-
 //void integral_recur (int nmin, int nmax, double vals[]); //do I need prototypes if func() before main()
-
 //have to work backwards in order to get this to work, multiplying by small numbers == bad
-
 
 void integral_recur (int nmin, int nmax, double vals[])	{
 
@@ -20,15 +17,13 @@ void integral_recur (int nmin, int nmax, double vals[])	{
 	int j = 0;
 
 	for(int i = nmin; i <= nmax; i++, j++)	{
-
 		vals[j] = vals1[i];
-
 	}
 
-	// *vals[] = *vals[nmin] // get vals to point to nmin in vals (I don't think I can do this)
-		//Might end up having to use for loop to put values in vals instead
-
-	//decided to do for loop only storing the vals that i want between nmin and nmax (inclusive)
+// *vals[] = *vals[nmin] 
+// get vals to point to nmin in vals (I don't think I can do this)
+//Might end up having to use for loop to put values in vals instead
+//decided to do for loop only storing the vals that i want between nmin and nmax (inclusive)
 }
 
 
@@ -53,14 +48,10 @@ int main(void)	{
 	double vals1[NMAX + 1], vals2[NMAX + 1];
 
 	integral_recur (nminn, nmaxx, vals1); //returns nminn to nmaxx in vals1[] in positions 0 to nmaxx - nminn
-
-	/*
+	
 	for(int i = 0; i <= nmaxx - nminn; i++)	{
-
 		printf("%f\t%d\n", vals1[i], i);
-
 	}
-	*/
 
 	integral_gen (nminn, nmaxx, vals2);
 
