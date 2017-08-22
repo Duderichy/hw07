@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
+#include "integral_general.h"
+
 void integral_recur (int nmin, int nmax, double vals[])	{
 
 	double vals1[100 + 1]; 
@@ -20,7 +22,7 @@ void integral_recur (int nmin, int nmax, double vals[])	{
 void integral_gen (int nmin, int nmax, double vals[]);
 
 void integral_gen (int nmin, int nmax, double vals[])	{
-
+	gsl_integration_function();
 }
 
 int main(void)	{
