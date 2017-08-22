@@ -7,6 +7,9 @@
 #include "integral_general.h"
 
 void integral_recur (int nmin, int nmax, double vals[])	{
+	// works backwards from I_100 using a given value at 100, and calculates the
+	// values of the integral between nmin and nmax and stores them (as well as
+	// calculating for all values > nmax, but it does not store them)
 
 	double vals1[100 + 1];
 
@@ -25,15 +28,17 @@ void integral_recur (int nmin, int nmax, double vals[])	{
 void integral_gen (int nmin, int nmax, double vals[]);
 
 void integral_gen (int nmin, int nmax, double vals[])	{
+	// this function uses the gsl library to calculate the value of the integral
+	// numerically
 	gsl_integration_function(nmax, nmin, vals);
 }
 
 int main(void)	{
 
-	#define NMAX 100
+	#define NMAX 100 //array size for storing the values of I_n
 
-	int nminn = 0;
-	int nmaxx = 100;
+	int nminn = 0; //min value of n to be calulated for integrals
+	int nmaxx = 100; //max value of n to be calculated for integrals
 
 	double vals1[NMAX + 1], vals2[NMAX + 1];
 
@@ -41,6 +46,7 @@ int main(void)	{
 
 	integral_gen (nminn, nmaxx, vals2);
 
+	// prints and compares the values of the different methods
 	for(int i = 0,j = nminn; i <= nmaxx - nminn; i++,j++)	{
 		printf("%.18f\t%.18f\t%d\n", vals1[i], vals2[i], j);
 	}
@@ -51,6 +57,9 @@ int main(void)	{
 	double tmin = 1;
 	double tmax = 2;
 
+	// times integral_recur and integral_gen per function call
+	// adjusts the number of calls such that there are enough calls to get a good
+	// average time per function call
 	printf("integral_recur\n");
 
 	do {

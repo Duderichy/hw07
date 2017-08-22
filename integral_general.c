@@ -4,8 +4,7 @@
 
 #include "integral_general.h"
 
-// Do I need to include <math.h> and <stdio.h> for both the integrate.c and this file? I don't think so, but it gave a warning
-// Can't include "file.h" twice or it will produce compilation erros?
+// integrates the given function for all n values between nmin and nmax
 
 double f (double x, void *params) {
   double n = *(double *) params;
