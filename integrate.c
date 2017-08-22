@@ -36,9 +36,8 @@ int main(void)	{
 	
 	integral_gen (nminn, nmaxx, vals2);
 
-	for(int i = 0,j = nminn; i <= nmaxx - nminn; i++)	{
+	for(int i = 0,j = nminn; i <= nmaxx - nminn; i++,j++)	{
 		printf("%f\t%f\t%d\n", vals1[i], vals2[i], j);
-		j++;
 	}
 
 	return 0;
