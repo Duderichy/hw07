@@ -4,14 +4,11 @@
 
 #include "integral_general.h"
 
-
-
 double f (double x, void *params) {
   double n = *(double *) params;
   double f = exp (-x) * pow (x, n);
   return f;
 }
-
 
 void gsl_integration_function (void) {
 
