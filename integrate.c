@@ -22,15 +22,15 @@ void integral_recur (int nmin, int nmax, double vals[])	{
 void integral_gen (int nmin, int nmax, double vals[]);
 
 void integral_gen (int nmin, int nmax, double vals[])	{
-	gsl_integration_function();
+	gsl_integration_function(nmax, nmin, vals);
 }
 
 int main(void)	{
 
 	#define NMAX 100
 
-	int nminn = 60;
-	int nmaxx = 80;
+	int nminn = 0;
+	int nmaxx = 100;
 
 	double vals1[NMAX + 1], vals2[NMAX + 1];
 
@@ -39,7 +39,7 @@ int main(void)	{
 	integral_gen (nminn, nmaxx, vals2);
 
 	for(int i = 0,j = nminn; i <= nmaxx - nminn; i++,j++)	{
-		printf("%f\t%f\t%d\n", vals1[i], vals2[i], j);
+		printf("%.18f\t%.18f\t%d\n", vals1[i], vals2[i], j);
 	}
 
 	return 0;
